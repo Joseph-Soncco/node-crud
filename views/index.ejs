@@ -33,7 +33,7 @@
               </tr>
             </thead>
             <tbody>
-              <% registros.forEach(vehiculo => { %>
+              <% datosObtenidos.forEach(vehiculo => { %>
                 <tr>
                   <td><%= vehiculo.id %></td>
                   <td><%= vehiculo.tipo %></td>
@@ -41,7 +41,7 @@
                   <td><%= vehiculo.color %></td>
                   <td>
                     <a href="./edit/<%= vehiculo.id %>" class="btn btn-sm btn-info">Editar</a>
-                    <a href="./delete" class="btn btn-sm btn-danger">Eliminar</a>
+                    <a href="./delete/<%= vehiculo.id %>" class="btn btn-sm btn-danger">Eliminar</a>
                   </td>
                 </tr>
               <% }) %>
@@ -55,6 +55,26 @@
   <footer>
     <p></p>
   </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded",()=>{
+      //querySelector()           - un elemento | el primer elemento
+      //querySelectorAll()        - una colección | array
+      const lnkEliminar = document.querySelectorAll('.delete'); //array
+
+      lnkEliminar.forEach(enlace =>{
+        enlace.addEventListener("click", function (event) {
+          event.preventDefault(); //Detenemos el evento click de cada <a>
+          
+          if(confimr("¿Está seguro de eliminar?")){
+            window.location.href = event.target.getAttribute('href');
+          }
+          
+        });
+      });
+
+    });
+  </script>
 
 </body>
 </html>

@@ -11,8 +11,8 @@ router.get('/', (req, res) => {
     }else{
       //Enviamos "json" los datos al navegador
       //res.send(results);
-      //res.render('edit', { dev: 'Jhon Francia Minaya', skill: 'Javascript', friends: ['Sergio', 'José', 'Raul'] });
-      res.render('index', { registros: results })
+      //res.render('edit', { dev: 'Joseph Emanuel Soncco Flores', skill: 'Javascript', friends: ['Kevin', 'Frank', 'Saul'] });
+      res.render('index', { datosObtenidos: results })
     }
   });
 });
@@ -21,6 +21,21 @@ router.get('/', (req, res) => {
 router.get('/create', (req, res) => {
   res.render('create');
 });
+
+//Es necesario el ID para este proceso
+router.get('/delete/:id', (req, res) => {
+  const idvehiculo = req.params.id;
+  conexion.query("DELETE FROM vehiculos WHERE id = ?", [idvehiculo], (error, results) => {
+    if(error){
+      throw(error);
+    }else{
+      res.redirect('/');
+    }
+  });
+});
+
+router.get('/edit',(req, res)=>{
+})
 
 //Acceder a toda la lógica
 const crud = require('./controllers/crud');

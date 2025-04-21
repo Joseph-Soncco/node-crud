@@ -17,18 +17,18 @@
 
   <main>
     <section class="container mt-3">
-      <form action="/save" method="post" autocomplete="off">
+      <form action="/save" method="post" id="formulario-registro" autocomplete="off">
         <div class="card">
           <div class="card-header">
             <a href="/" class="btn btn-sm btn-primary">Mostrar lista</a>
           </div>
           <div class="card-body">
             <div class="mb-3 form-floating">
-              <input type="text" class="form-control" id="tipo" name="tipo" autofocus>
+              <input type="text" class="form-control" id="tipo" name="tipo" autofocus required>
               <label for="form-label">Tipo</label>
             </div>
             <div class="mb-3 form-floating">
-              <select name="marca" id="marca" class="form-select">
+              <select name="marca" id="marca" class="form-select" required>
                 <option value="">Seleccione</option>
                 <option value="Kia">Kia</option>
                 <option value="Toyota">Toyota</option>
@@ -39,7 +39,7 @@
               <label for="form-label">Marca</label>
             </div>
             <div class="mb-3 form-floating">
-              <input type="text" class="form-control" id="color" name="color">
+              <input type="text" class="form-control" id="color" name="color" required>
               <label for="form-label">Color</label>
             </div>
           </div>
@@ -56,5 +56,20 @@
     <p></p>
   </footer>
   
+  <script>
+    document.addEventListener("DOMContentLoaded",()=>{
+      const formulario = document.querySelector("#formulario-registro");
+
+      //Debemos evitar que se ejecute "submit"
+      formulario.addEventListener("submit", (event)=>{
+        event.preventDefault();
+
+        if(confirm("¿Está seguro de guardar?")){
+          formulario.sutmit();
+        }
+      });
+    });
+  </script>
+
 </body>
 </html>
