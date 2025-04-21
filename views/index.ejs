@@ -41,7 +41,7 @@
                   <td><%= vehiculo.color %></td>
                   <td>
                     <a href="./edit/<%= vehiculo.id %>" class="btn btn-sm btn-info">Editar</a>
-                    <a href="./delete/<%= vehiculo.id %>" class="btn btn-sm btn-danger">Eliminar</a>
+                    <a href="./delete/<%= vehiculo.id %>" class="btn btn-sm btn-danger delete">Eliminar</a>
                   </td>
                 </tr>
               <% }) %>
@@ -57,19 +57,17 @@
   </footer>
 
   <script>
-    document.addEventListener("DOMContentLoaded",()=>{
-      //querySelector()           - un elemento | el primer elemento
-      //querySelectorAll()        - una colección | array
-      const lnkEliminar = document.querySelectorAll('.delete'); //array
+    document.addEventListener("DOMContentLoaded", () => {
+      //querySelector() devuelve el primer elemento que coincide con el selector CSS especificado.
+      //querySelectorAll() devuelve todos los elementos que coinciden con el selector CSS especificado.
+      const lnkEliminar = document.querySelectorAll(".delete");
 
-      lnkEliminar.forEach(enlace =>{
-        enlace.addEventListener("click", function (event) {
-          event.preventDefault(); //Detenemos el evento click de cada <a>
-          
-          if(confimr("¿Está seguro de eliminar?")){
-            window.location.href = event.target.getAttribute('href');
+      lnkEliminar.forEach((enlace) => {
+        enlace.addEventListener("click", (event) => {
+          event.preventDefault(); // Detenemos el evento click de cada <a>
+          if (confirm("¿Está seguro de eliminar este registro?")) {
+            window.location.href = event.target.getAttribute("href");
           }
-          
         });
       });
 

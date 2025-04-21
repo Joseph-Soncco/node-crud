@@ -3,9 +3,63 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+
+  <!--Bootstrap 5.3-->
   <title>Document</title>
 </head>
 <body>
+  <header>
+    <nav></nav>
+  </header>
+
+  <main>
+    <section class="container mt-3">
+      <form action="/update" method="post" id="formulario-registros"autocomplete="off">
+        <input type="hidden" name="id" id="id" value=" <%= vehiculo.id %>">
+        <div class="card">
+          <div class="card-header">
+            <a href="./" class="btn btn-sm btn-primary">Mostrar Lista</a>
+          </div>
+          <div class="card-body">
+            <div class="mb-3 form-floating">
+              <input type="text" class="form-control" id="tipo" name="tipo" value="<%= vehiculo.tipo %>" autofocus required>
+              <label for="form-label">Tipo</label>
+            </div>
+            <div class="mb-3 form-floating">
+              <select name="marca" id="marca" class="form-select">
+                <option value="">Seleccione</option>
+                <option value="Kia" <%= vehiculo.marca == 'Kia' ? 'selected':''%> >Kia</option>
+                <option value="Hyundai" <%= vehiculo.marca == 'Hyundai' ? 'selected':''%>>Hyundai</option>
+                <option value="Toyota" <%= vehiculo.marca == 'Toyota' ? 'selected':''%>>Toyota</option>
+                <option value="Nissan" <%= vehiculo.marca == 'Kia' ? 'selected':''%>>Nissan</option>
+                <option value="Kia" <%= vehiculo.marca == 'Kia' ? 'selected':''%>>Javal</option>              
+              </select>
+              <label for="form-label">Marca</label>
+            </div>
+            <div class="mb-3 form-floating">
+              <input type="text" class="form-control" id="color" name="color" value="<%= vehiculo.color %>" required>
+              <label for="form-label">Color</label>
+            </div>
+          </div>
+          <div class="card-body"></div>
+          <div class="card-footer">
+            <button class="btn btn-sm btn-primary" type="submit">Actualizar</button>
+            <a href="/" class="btn btn-sm btn-secondary">Cancelar</a>
+          </div>
+        </div>
+      </form>
+    </section>
+  </main>
   
+  <footer>
+  <p></p>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded",() =>{
+      const formulario = document.querySelector("#formulario-registros");
+    })
+  </script>
 </body>
 </html>

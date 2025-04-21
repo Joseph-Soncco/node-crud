@@ -34,11 +34,20 @@ router.get('/delete/:id', (req, res) => {
   });
 });
 
-router.get('/edit',(req, res)=>{
-})
+//Para editar, debemos identificar el registro
+router.get('/edit/:id', (req, res)=>{
+  conexion.query("SELECT * FROM vehiculos WHERE id = ?", [req.params.id], (error, results) => {
+    if(error){
+      throw(error);
+    }else{
+      res.render('edit',{ vehiculo: results[0] });
+    }
+  });
+});
 
 //Acceder a toda la lógica
 const crud = require('./controllers/crud');
 router.post('/save', crud.save);
+router.post('/update', crud.update);
 
 module.exports = router;
