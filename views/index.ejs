@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRUD NodeJS</title>
+
+  <!-- Bootstrap 5.3 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+
+</head>
+<body>
+  
+  <header>
+    <nav></nav>
+  </header>
+
+  <main>
+    <section class="container mt-3">
+      <div class="card">
+        <div class="card-header">
+          <a href="./create" class="btn btn-sm btn-primary">Registrar</a>
+        </div>
+        <div class="card-body">
+          <table class="table table-sm table-striped">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Tipo</th>
+                <th>Marca</th>
+                <th>Color</th>
+                <th>Operaciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% registros.forEach(vehiculo => { %>
+                <tr>
+                  <td><%= vehiculo.id %></td>
+                  <td><%= vehiculo.tipo %></td>
+                  <td><%= vehiculo.marca %></td>
+                  <td><%= vehiculo.color %></td>
+                  <td>
+                    <a href="./edit/<%= vehiculo.id %>" class="btn btn-sm btn-info">Editar</a>
+                    <a href="./delete" class="btn btn-sm btn-danger">Eliminar</a>
+                  </td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p></p>
+  </footer>
+
+</body>
+</html>
